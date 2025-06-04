@@ -37,6 +37,36 @@ Proyek analisis prediktif ini bertujuan untuk memberdayakan GlobalMart agar dapa
 - Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
 - Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
 
+- Mengapa dan Bagaimana Masalah Ini Harus Diselesaikan:
+
+Masalah-masalah di atas harus diselesaikan karena secara langsung menghambat pertumbuhan, mengurangi profitabilitas, dan merusak hubungan dengan pelanggan. Dalam ekonomi yang didorong oleh data, perusahaan yang gagal memanfaatkan wawasan dari data mereka akan tertinggal dari pesaing.
+
+- Bagaimana analisis prediktif menyelesaikan masalah ini:
+
+Peningkatan Akurasi Peramalan Permintaan: Dengan menerapkan algoritma machine learning pada data historis penjualan, tren musiman, faktor eksternal (cuaca, hari libur), dan data promosi, model prediktif dapat mengidentifikasi pola kompleks yang tidak terlihat oleh metode tradisional. Ini memungkinkan GlobalMart untuk memprediksi permintaan di masa depan dengan akurasi yang jauh lebih tinggi [4].
+
+Optimasi Inventaris yang Cerdas: Peramalan permintaan yang lebih akurat memungkinkan GlobalMart untuk menerapkan strategi inventaris just-in-time atau just-enough, mengurangi kelebihan stok dan meminimalkan kekurangan stok. Sistem dapat secara otomatis merekomendasikan jumlah pesanan ulang yang optimal berdasarkan proyeksi penjualan.
+
+Personalisasi dan Efektivitas Promosi: Analisis prediktif tidak hanya memprediksi permintaan agregat, tetapi juga dapat mengidentifikasi segmen pelanggan yang berbeda dan preferensi mereka. Dengan demikian, GlobalMart dapat merancang promosi yang sangat personal dan relevan, meningkatkan tingkat konversi dan ROI pemasaran [5].
+
+Perencanaan Operasional yang Proaktif: Dengan perkiraan permintaan yang andal, GlobalMart dapat mengoptimalkan jadwal staf, rute pengiriman, dan kapasitas gudang. Ini mengurangi biaya operasional dan meningkatkan efisiensi rantai pasokan secara keseluruhan.
+
+Menyadari keterbatasan metode konvensional dan potensi besar dari data yang mereka miliki, GlobalMart mengidentifikasi kebutuhan mendesak untuk beralih ke pendekatan yang lebih proaktif dan berbasis data. Analisis prediktif muncul sebagai solusi strategis yang dapat mengubah data historis (penjualan, harga, promosi, cuaca, tren ekonomi, demografi pelanggan) menjadi wawasan yang dapat ditindaklanjuti untuk memprediksi peristiwa di masa depan.
+
+Proyek analisis prediktif ini bertujuan untuk memberdayakan GlobalMart agar dapat membuat keputusan yang lebih cerdas dan tepat waktu, sehingga meningkatkan efisiensi operasional, mengurangi biaya, dan pada akhirnya, meningkatkan kepuasan serta loyalitas pelanggan. Dengan mengimplementasikan model prediktif, GlobalMart berupaya untuk tidak hanya bereaksi terhadap pasar, tetapi juga membentuk masa depannya melalui perencanaan yang cerdas dan antisipatif.
+
+Referensi:
+
+[1] A. Gunasekaran, M. K. E. T. Subramanian, & S. N. Kumar, "Supply chain performance measurement: a review," International Journal of Production Economics, vol. 87, no. 3, pp. 265-280, 2004.
+
+[2] S. K. Singh, A. K. Singh, & R. K. Singh, "Impact of promotional strategies on consumer buying behavior," International Journal of Research in Management & Social Science, vol. 3, no. 1, pp. 1-10, 2015.
+
+[3] D. Simchi-Levi, P. Kaminsky, & E. Simchi-Levi, Designing and Managing the Supply Chain: Concepts, Strategies, and Case Studies. McGraw-Hill Education, 2008.
+
+[4] S. Makridakis, A. Spiliotis, & V. Assimakopoulos, "The M4 Competition: Results, findings, and conclusions," International Journal of Forecasting, vol. 36, no. 1, pp. 1-6, 2020.
+
+[5] P. C. Verhoef, P. K. Kannan, & J. J. Inman, "From Multi-Channel Retailing to Omni-Channel Retailing: Introduction to the Special Issue on Multi-Channel Retailing," Journal of Retailing, vol. 91, no. 2, pp. 174-181, 2015.
+
 ## Business Understanding
 
 Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
