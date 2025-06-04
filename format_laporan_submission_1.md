@@ -538,7 +538,7 @@ Nilai R2 negatif menunjukkan bahwa model lebih buruk daripada hanya memprediksi 
 Hasil Proyek Berdasarkan Metrik Evaluasi
 Berdasarkan hasil pemodelan pada dataset sintetis GlobalMart, model-model yang diuji menunjukkan performa sebagai berikut:
 
-![image](https://github.com/user-attachments/assets/b5ec3a60-6a62-4a24-a8ad-2931e8744248)
+WhatsApp Image 2025-06-04 at 21.09.23.jpeg
 
 
 Analisis Hasil:
