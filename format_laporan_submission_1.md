@@ -2,7 +2,7 @@
 
 ## Domain Proyek
 
-Meningkatkan Penjualan dengan Analisis Prediktif: Studi Kasus Perusahaan Ritel "XYZ"
+Meningkatkan Penjualan dengan Analisis Prediktif: Studi Kasus Perusahaan Ritel "GlobalMart"
 
 Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
 
