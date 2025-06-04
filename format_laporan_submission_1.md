@@ -4,6 +4,31 @@
 
 Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
 
+Latar Belakang Proyek Analisis Prediktif: Studi Kasus GlobalMart
+Dalam lanskap bisnis ritel modern yang sangat kompetitif dan dinamis, kemampuan untuk memprediksi permintaan pelanggan, mengelola inventaris secara efisien, dan merencanakan strategi pemasaran yang efektif adalah kunci keberhasilan. Perusahaan ritel besar seperti GlobalMart, dengan jangkauan operasional global dan volume transaksi yang masif, secara inheren menghadapi tantangan kompleks dalam mengoptimalkan operasi mereka.
+
+Secara tradisional, banyak perusahaan ritel mengandalkan metode perkiraan permintaan yang bersifat reaktif atau berdasarkan intuisi dan pengalaman masa lalu. Pendekatan ini seringkali menyebabkan beberapa masalah krusial:
+
+Manajemen Inventaris yang Tidak Efisien:
+
+Kelebihan Stok (Overstocking): Menyebabkan peningkatan biaya penyimpanan, risiko kerusakan atau kadaluarsa produk, dan penurunan nilai aset. Modal yang terikat dalam stok berlebih juga menghambat investasi di area lain.
+
+Kekurangan Stok (Understocking): Mengakibatkan kehilangan peluang penjualan, ketidakpuasan pelanggan, dan potensi beralihnya pelanggan ke pesaing. Ini juga merusak reputasi merek.
+
+Efektivitas Promosi yang Rendah:
+
+Kampanye promosi yang tidak didasarkan pada pemahaman mendalam tentang perilaku pelanggan dan tren pasar cenderung tidak tepat sasaran. Hal ini menyebabkan pemborosan anggaran pemasaran dan ROI (Return on Investment) yang minimal.
+
+Kesulitan dalam mengidentifikasi produk yang tepat untuk dipromosikan, pada waktu yang tepat, dan kepada segmen pelanggan yang tepat.
+
+Kesulitan dalam Perencanaan Sumber Daya:
+
+Perencanaan staf, logistik, dan rantai pasokan menjadi tidak optimal tanpa perkiraan permintaan yang akurat. Hal ini dapat menyebabkan inefisiensi operasional, biaya tenaga kerja yang tidak perlu, atau kekurangan kapasitas saat dibutuhkan.
+
+Menyadari keterbatasan metode konvensional dan potensi besar dari data yang mereka miliki, GlobalMart mengidentifikasi kebutuhan mendesak untuk beralih ke pendekatan yang lebih proaktif dan berbasis data. Analisis prediktif muncul sebagai solusi strategis yang dapat mengubah data historis (penjualan, harga, promosi, cuaca, tren ekonomi, demografi pelanggan) menjadi wawasan yang dapat ditindaklanjuti untuk memprediksi peristiwa di masa depan.
+
+Proyek analisis prediktif ini bertujuan untuk memberdayakan GlobalMart agar dapat membuat keputusan yang lebih cerdas dan tepat waktu, sehingga meningkatkan efisiensi operasional, mengurangi biaya, dan pada akhirnya, meningkatkan kepuasan serta loyalitas pelanggan. Dengan mengimplementasikan model prediktif, GlobalMart berupaya untuk tidak hanya bereaksi terhadap pasar, tetapi juga membentuk masa depannya melalui perencanaan yang cerdas dan antisipatif.
+
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
 - Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
