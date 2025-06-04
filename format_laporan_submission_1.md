@@ -37,6 +37,10 @@ Proyek analisis prediktif ini bertujuan untuk memberdayakan GlobalMart agar dapa
 - Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
 - Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
 
+
+
+
+
 - Mengapa dan Bagaimana Masalah Ini Harus Diselesaikan:
 
 Masalah-masalah di atas harus diselesaikan karena secara langsung menghambat pertumbuhan, mengurangi profitabilitas, dan merusak hubungan dengan pelanggan. Dalam ekonomi yang didorong oleh data, perusahaan yang gagal memanfaatkan wawasan dari data mereka akan tertinggal dari pesaing.
