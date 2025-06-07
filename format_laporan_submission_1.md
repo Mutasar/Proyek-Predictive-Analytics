@@ -43,7 +43,42 @@ Pengembangan dan Evaluasi Model Prediktif Berganda: Kami akan mengembangkan dan 
 Analisis Faktor Pengaruh Penjualan: Setelah model terbaik dipilih, kami akan menganalisis pentingnya fitur (feature importance) dari model tersebut (jika didukung) untuk mengidentifikasi faktor-faktor kunci yang paling berkontribusi pada jumlah penjualan. Hal ini akan memberikan wawasan yang dapat digunakan GlobalMart untuk strategi bisnis, seperti perencanaan promosi dan penentuan harga.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Data yang digunakan dalam proyek ini adalah data penjualan produk GlobalMart. Data ini disimulasikan untuk merepresentasikan karakteristik data penjualan ritel yang mencakup informasi seperti tanggal, ID produk, jumlah penjualan, harga satuan, biaya promosi, suhu rata-rata, indikator hari libur, bulan, tahun, dan hari dalam seminggu. Simulasi data ini juga mencakup faktor-faktor seperti musiman, tren, promosi, hari libur, dan pengaruh cuaca untuk menciptakan dataset yang kaya dan realistis untuk tujuan peramalan.
+sumber dataset yang kami ambil adalah : ([https://www.kaggle.com/datasets])([(https://www.kaggle.com/datasets/downshift/city-bike-travels-dataset]).Sumber data ini adalah dataset simulasi yang dibuat langsung dalam notebook ini.
+
+Informasi awal mengenai struktur data dapat dilihat dari output df.info() :
+<class 'pandas.core.frame.DataFrame'>
+Index: 53300 entries, 1500 to 54799
+Data columns (total 14 columns):
+ #   Column                   Non-Null Count  Dtype         
+---  ------                   --------------  -----         
+ 0   tanggal                  53300 non-null  datetime64[ns]
+ 1   id_produk                53300 non-null  object        
+ 2   jumlah_penjualan         53300 non-null  int64         
+ 3   harga_satuan             53300 non-null  float64       
+ 4   biaya_promosi            53300 non-null  int64         
+ 5   suhu_rata2               53300 non-null  float64       
+ 6   hari_libur               53300 non-null  int64         
+ 7   bulan                    53300 non-null  int64         
+ 8   tahun                    53300 non-null  int64         
+ 9   hari_dalam_minggu        53300 non-null  int64         
+ 10  hari_dalam_tahun         53300 non-null  int32         
+ 11  minggu_dalam_tahun       53300 non-null  int64         
+ 12  jumlah_penjualan_lag_7   53300 non-null  float64       
+ 13  jumlah_penjualan_lag_30  53300 non-null  float64       
+dtypes: datetime64[ns](1), float64(4), int32(1), int64(7), object(1)
+memory usage: 5.9+ MB
+
+df.head() 
+tanggal	id_produk	jumlah_penjualan	harga_satuan	biaya_promosi	suhu_rata2	hari_libur	bulan	tahun	hari_dalam_minggu	hari_dalam_tahun	minggu_dalam_tahun	jumlah_penjualan_lag_7	jumlah_penjualan_lag_30
+1500	2022-01-31	PROD_000	166	164800.0	990	34.4	0	1	2022	0	31	5	51.0	172.0
+1550	2022-02-01	PROD_000	103	394600.0	0	34.3	0	2	2022	1	32	5	55.0	100.0
+1600	2022-02-02	PROD_000	131	382800.0	0	28.6	0	2	2022	2	33	5	175.0	225.0
+1650	2022-02-03	PROD_000	137	101500.0	0	30.2	0	2	2022	3	34	5	159.0	120.0
+1700	2022-02-04	PROD_000	211	456000.0	0	30.4	0	2	2022	4	35	5	122.0	51.0
+
+
+yang menunjukkan tipe data setiap kolom dan beberapa baris pertama data. Ukuran dataset, jumlah baris dan kolom, juga ditampilkan.
 
 Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
