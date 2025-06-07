@@ -1,8 +1,12 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Mutasar
 
 ## Domain Proyek
 
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+Proyek ini berfokus pada peramalan jumlah penjualan produk untuk GlobalMart. Dalam industri ritel yang sangat dinamis, kemampuan untuk memprediksi permintaan produk secara akurat adalah krusial. Tantangan utama yang dihadapi oleh banyak bisnis, termasuk GlobalMart, adalah ketidakpastian dalam menentukan jumlah stok yang tepat. Kelebihan stok dapat meningkatkan biaya penyimpanan dan risiko kadaluarsa, sementara kekurangan stok dapat menyebabkan kehilangan peluang penjualan dan mengecewakan pelanggan.
+
+Peramalan penjualan yang akurat memungkinkan GlobalMart untuk mengoptimalkan manajemen inventaris, merencanakan rantai pasok dengan lebih efisien, mengalokasikan sumber daya (seperti staf dan anggaran promosi) dengan lebih baik, serta merespons perubahan pasar dengan cepat. Penerapan model peramalan penjualan berbasis data diharapkan dapat meminimalkan kerugian akibat ketidakseimbangan stok dan memaksimalkan pendapatan. Beberapa studi menunjukkan bahwa akurasi peramalan penjualan yang meningkat dapat secara signifikan mengurangi biaya operasional dan meningkatkan profitabilitas bisnis ritel [1].
+
+[1] Fildes, R., & Goodwin, P. (2007). Against the Rules: How Expectations Affect Forecasts and What Can Be Done. International Journal of Forecasting, 23(1), 11-17.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
@@ -17,20 +21,17 @@ Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
 Bagian laporan ini mencakup:
 
 ### Problem Statements
-
 Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Ketidakpastian Permintaan: GlobalMart kesulitan dalam memprediksi jumlah pasti produk yang akan terjual di masa mendatang, yang berdampak pada efisiensi operasional.
+- Manajemen Inventaris yang Tidak Optimal: Kurangnya prediksi penjualan yang akurat menyebabkan tantangan dalam menjaga keseimbangan stok, seringkali mengakibatkan kelebihan atau kekurangan persediaan.
+- Alokasi Sumber Daya yang Kurang Efektif: Tanpa pemahaman yang jelas tentang permintaan di masa depan, GlobalMart kesulitan mengalokasikan anggaran promosi, staf, dan sumber daya logistik secara efisien.
 
 ### Goals
 
 Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
-
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+- Meningkatkan Akurasi Peramalan Penjualan: Mengembangkan model prediktif yang dapat memprediksi jumlah penjualan produk dengan tingkat akurasi yang tinggi.
+- Mengoptimalkan Manajemen Inventaris: Memberikan perkiraan penjualan yang andal untuk membantu GlobalMart menentukan tingkat stok yang optimal.
+- Mendukung Pengambilan Keputusan Berbasis Data: Memberikan wawasan tentang faktor-faktor yang paling memengaruhi penjualan untuk membantu dalam perencanaan promosi dan alokasi sumber daya.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
