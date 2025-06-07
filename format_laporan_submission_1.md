@@ -86,79 +86,49 @@ Masalah Awal (High-Level):
 Klarifikasi masalah memerlukan identifikasi siapa saja yang terpengaruh oleh masalah dan siapa yang akan mendapatkan manfaat dari solusinya.
 
 Manajemen Inventaris: Manajer rantai pasokan, manajer gudang, tim pengadaan.
-
 Pemasaran: Manajer kampanye, analis pemasaran.
-
 Operasional: Manajer toko, tim logistik.
-
 Manajemen Senior: CEO, CFO, COO (tertarik pada dampak finansial dan strategis).
-
 Melibatkan pemangku kepentingan ini di awal memastikan bahwa proyek selaras dengan tujuan bisnis mereka dan mendapatkan dukungan yang diperlukan.
 
 3. Menggali Akar Masalah (Root Cause Analysis)
 Setelah masalah diidentifikasi, langkah selanjutnya adalah memahami mengapa masalah tersebut terjadi. Ini seringkali melibatkan wawancara, analisis proses bisnis saat ini, dan peninjauan data yang ada.
-
 Mengapa Kelebihan/Kekurangan Stok?
-
 Metode peramalan manual atau berdasarkan pengalaman yang tidak dapat menangani volatilitas pasar atau pola permintaan yang kompleks.
-
 Kurangnya integrasi data antara penjualan, inventaris, dan promosi.
-
 Tidak adanya pertimbangan faktor eksternal (cuaca, hari libur, tren ekonomi) dalam peramalan.
-
 Mengapa Promosi Tidak Efektif?
-
 Penargetan promosi yang terlalu umum (one-size-fits-all).
-
 Kurangnya pemahaman tentang produk mana yang paling sensitif terhadap promosi atau kapan waktu terbaik untuk meluncurkan promosi.
-
 Tidak ada analisis dampak promosi sebelumnya secara sistematis.
-
 Mengapa Perencanaan Sumber Daya Sulit?
-
 Ketergantungan pada perkiraan penjualan yang tidak akurat.
-
 Kurangnya visibilitas ke depan tentang lonjakan atau penurunan permintaan.
 
-4. Mendefinisikan Tujuan Bisnis yang Spesifik
+
+5. Mendefinisikan Tujuan Bisnis yang Spesifik
 Dari pemahaman akar masalah, tujuan bisnis yang spesifik, terukur, dapat dicapai, relevan, dan terikat waktu (SMART) dapat dirumuskan.
-
 Tujuan Bisnis Umum: Meningkatkan efisiensi operasional dan profitabilitas melalui pengambilan keputusan berbasis data.
-
 Tujuan Bisnis Spesifik (seperti dalam studi kasus):
-
 Meningkatkan akurasi perkiraan permintaan produk dari rata-rata 70% menjadi 90% dalam 12 bulan.
-
 Mengurangi stok berlebih sebesar 20% dalam 18 bulan.
-
 Meningkatkan ketersediaan produk sebesar 15% untuk mengurangi kehilangan penjualan dalam 18 bulan.
-
 Meningkatkan efektivitas promosi sebesar 25% (misalnya, dalam hal peningkatan penjualan atau ROI) dalam 12 bulan.
-
 Mengurangi biaya operasional rantai pasokan.
-
 Meningkatkan kepuasan pelanggan.
 
 5. Merumuskan Pertanyaan Analitis (Data Science Questions)
 Ini adalah langkah kunci di mana masalah bisnis diterjemahkan menjadi pertanyaan yang dapat dijawab melalui analisis data dan pemodelan.
-
 "Variabel apa saja (harga, promosi, musiman, cuaca, dll.) yang paling memengaruhi volume penjualan produk?"
-
 "Bagaimana kita dapat memprediksi jumlah penjualan produk X pada lokasi Y untuk periode waktu Z di masa depan?"
-
 "Model prediktif mana yang paling akurat untuk peramalan permintaan produk GlobalMart?"
-
 "Bagaimana kita dapat mengidentifikasi segmen pelanggan yang paling responsif terhadap jenis promosi tertentu?"
-
 "Berapa tingkat inventaris optimal untuk setiap SKU (Stock Keeping Unit) di setiap lokasi untuk meminimalkan biaya sambil memenuhi permintaan?"
 
 6. Menentukan Kriteria Keberhasilan dan Metrik
 Untuk setiap pertanyaan analitis, metrik keberhasilan harus didefinisikan.
-
 Metrik Peramalan: Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), R-squared.
-
 Metrik Bisnis: Persentase pengurangan stok berlebih, persentase peningkatan ketersediaan produk, ROI promosi, tingkat kepuasan pelanggan (melalui survei atau data penjualan berulang).
-
 Mengapa dan Bagaimana Masalah Ini Harus Diselesaikan Melalui Analisis Prediktif
 Masalah-masalah yang dihadapi GlobalMart harus diselesaikan karena secara langsung menghambat pertumbuhan, mengurangi profitabilitas, dan merusak hubungan dengan pelanggan. Dalam ekonomi yang didorong oleh data, perusahaan yang gagal memanfaatkan wawasan dari data mereka akan tertinggal dari pesaing.
 
@@ -285,87 +255,59 @@ Variabel-variabel pada Dataset Penjualan GlobalMart adalah sebagai berikut:
 Dataset sintetis ini mencakup variabel-variabel berikut yang dianggap relevan untuk memprediksi jumlah penjualan:
 
 tanggal:
-
 Tipe Data: datetime
-
 Deskripsi: Tanggal spesifik terjadinya transaksi penjualan. Ini adalah variabel kunci untuk analisis deret waktu dan menangkap pola musiman atau tren.
 
 id_produk:
-
 Tipe Data: object (string)
-
 Deskripsi: Identifikasi unik untuk setiap produk. Memungkinkan analisis penjualan per produk.
-
 jumlah_penjualan:
-
 Tipe Data: int
-
 Deskripsi: Jumlah unit produk yang terjual pada tanggal dan untuk produk tertentu. Ini adalah variabel target yang akan diprediksi oleh model.
 
 harga_satuan:
-
 Tipe Data: float
-
 Deskripsi: Harga jual per unit produk. Harga dapat memengaruhi volume penjualan.
 
 biaya_promosi:
-
 Tipe Data: int
-
 Deskripsi: Biaya yang dikeluarkan untuk promosi produk pada tanggal tertentu. Variabel ini mensimulasikan dampak kampanye pemasaran terhadap penjualan.
 
 suhu_rata2:
-
 Tipe Data: float
 
 Deskripsi: Suhu rata-rata harian di lokasi penjualan. Faktor cuaca dapat memengaruhi permintaan produk tertentu (misalnya, minuman dingin, pakaian).
 
 hari_libur:
-
 Tipe Data: int (biner: 0 atau 1)
-
 Deskripsi: Indikator apakah tanggal tersebut adalah hari libur (1) atau bukan (0). Hari libur seringkali menyebabkan perubahan signifikan dalam pola pembelian.
 
 bulan:
-
 Tipe Data: int
-
 Deskripsi: Bulan dari tanggal penjualan (1-12). Digunakan untuk menangkap pola musiman bulanan.
 
 tahun:
-
 Tipe Data: int
-
 Deskripsi: Tahun dari tanggal penjualan. Digunakan untuk menangkap tren jangka panjang.
 
 hari_dalam_minggu:
-
 Tipe Data: int (0=Senin, 6=Minggu)
-
 Deskripsi: Hari dalam seminggu dari tanggal penjualan. Pola penjualan sering berbeda antara hari kerja dan akhir pekan.
 
 hari_dalam_tahun:
-
 Tipe Data: int
-
 Deskripsi: Hari keberapa dalam satu tahun (1-366). Fitur rekayasa ini membantu menangkap pola musiman yang lebih halus di luar bulan.
 
 minggu_dalam_tahun:
-
 Tipe Data: int
-
 Deskripsi: Minggu keberapa dalam satu tahun (1-53). Fitur rekayasa ini juga membantu menangkap pola musiman pada tingkat mingguan.
 
 jumlah_penjualan_lag_7:
-
 Tipe Data: float
-
 Deskripsi: Jumlah penjualan produk yang sama 7 hari sebelumnya (fitur lag). Ini adalah fitur yang sangat penting untuk model deret waktu karena penjualan saat ini seringkali sangat berkorelasi dengan penjualan di masa lalu terdekat.
 
 jumlah_penjualan_lag_30:
-
 Tipe Data: float
-
 Deskripsi: Jumlah penjualan produk yang sama 30 hari sebelumnya (fitur lag). Memberikan informasi tentang tren penjualan jangka menengah.
 
 Variabel-variabel ini dipilih untuk mencakup berbagai aspek yang dapat memengaruhi permintaan ritel, mulai dari karakteristik produk dan promosi, hingga faktor kalender dan lingkungan eksternal. Pemahaman yang mendalam tentang setiap variabel ini sangat penting untuk tahap pra-pemrosesan data dan pemilihan model yang tepat.
@@ -391,103 +333,69 @@ Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyel
 Berdasarkan sifat permasalahan (regresi, memprediksi nilai numerik kontinu) dan potensi kompleksitas pola dalam data penjualan, beberapa algoritma machine learning yang kuat dan serbaguna telah dipilih untuk dieksplorasi. Pemilihan ini juga mempertimbangkan kemampuan model untuk menangani berbagai jenis fitur (numerik dan potensi kategorikal) serta memberikan interpretasi fitur jika memungkinkan.
 
 Model-model yang akan digunakan meliputi:
-
 Linear Regression (Regresi Linier):
-
 Jenis: Model regresi dasar.
-
 Deskripsi: Model ini berfungsi sebagai baseline untuk memahami hubungan linier antara fitur dan target. Meskipun sederhana, ini memberikan titik referensi yang baik untuk membandingkan performa model yang lebih kompleks.
-
 Parameter Kunci: Tidak banyak parameter yang dapat disetel secara eksplisit untuk LinearRegression di Scikit-learn, karena ini adalah model parametrik yang langsung memecahkan koefisien.
 
 Random Forest Regressor:
-
 Jenis: Model ensemble berbasis pohon keputusan (bagging).
-
 Deskripsi: Random Forest membangun banyak pohon keputusan secara independen dan menggabungkan prediksi mereka untuk menghasilkan perkiraan akhir. Ini sangat efektif dalam menangani non-linearitas, interaksi fitur, dan kurang rentan terhadap overfitting dibandingkan pohon tunggal.
 
 Parameter Kunci (Contoh yang digunakan dalam notebook):
-
 n_estimators: Jumlah pohon dalam forest (misalnya, 100). Semakin banyak pohon, semakin stabil prediksinya, tetapi juga semakin lambat.
-
 random_state: Seed untuk reproduktibilitas hasil.
 
 n_jobs: Jumlah core CPU yang digunakan (-1 berarti menggunakan semua core yang tersedia).
-
 Gradient Boosting Regressor:
-
 Jenis: Model ensemble berbasis pohon keputusan (boosting).
-
 Deskripsi: Gradient Boosting membangun pohon secara sekuensial, di mana setiap pohon mencoba memperbaiki kesalahan yang dibuat oleh pohon sebelumnya. Ini seringkali memberikan performa yang sangat tinggi.
 
 Parameter Kunci (Contoh yang digunakan dalam notebook):
-
 n_estimators: Jumlah tahap boosting (jumlah pohon) (misalnya, 100).
-
 learning_rate: Mengontrol kontribusi setiap pohon terhadap hasil akhir (misalnya, 0.1). Nilai yang lebih kecil membutuhkan n_estimators yang lebih besar.
-
 random_state: Seed untuk reproduktibilitas.
 
 XGBoost Regressor (Extreme Gradient Boosting):
-
 Jenis: Implementasi yang sangat efisien dan scalable dari Gradient Boosting.
-
 Deskripsi: XGBoost dikenal karena kecepatan dan performa tinggi di berbagai masalah machine learning. Ini mencakup teknik regulasi untuk mengurangi overfitting dan dapat menangani data yang hilang secara internal.
 
 Parameter Kunci (Contoh yang digunakan dalam notebook):
-
 n_estimators: Jumlah iterasi boosting (misalnya, 100).
-
 learning_rate: Tingkat pembelajaran (misalnya, 0.1).
-
 random_state: Seed untuk reproduktibilitas.
-
 n_jobs: Jumlah thread paralel yang digunakan (-1 berarti menggunakan semua core).
 
 2. Tahapan Proses Pemodelan
 Proses pemodelan akan mengikuti tahapan standar dalam alur kerja machine learning:
 
 Pembagian Data (Train-Test Split):
-
 Data akan dibagi menjadi set pelatihan (training set) dan set pengujian (testing set). Set pelatihan digunakan untuk melatih model, sementara set pengujian digunakan untuk mengevaluasi performa model pada data yang belum pernah dilihat sebelumnya.
-
 Parameter: test_size=0.2 (20% data untuk pengujian), random_state=42 (untuk memastikan pembagian yang konsisten).
 
 Pra-pemrosesan Data dalam Pipeline:
-
 Untuk memastikan konsistensi dan menghindari kebocoran data (data leakage), langkah-langkah pra-pemrosesan (seperti penskalaan fitur numerik) akan diintegrasikan ke dalam Pipeline Scikit-learn.
-
 Penskalaan Numerik: Fitur numerik (misalnya, harga_satuan, biaya_promosi, suhu_rata2, fitur lag) akan distandarisasi menggunakan StandardScaler. Ini mengubah data sehingga memiliki rata-rata 0 dan standar deviasi 1, yang penting untuk banyak algoritma ML.
-
 Penanganan Fitur Kategorikal (Opsional): Jika id_produk atau fitur kategorikal lainnya digunakan secara langsung dalam model, OneHotEncoder akan diterapkan untuk mengubahnya menjadi representasi numerik. Namun, dalam implementasi notebook ini, id_produk tidak secara langsung digunakan sebagai fitur yang di-encode, melainkan digunakan untuk groupby dalam pembuatan fitur lag.
 
 Pelatihan Model:
-
 Setiap model yang dipilih akan dilatih menggunakan set pelatihan yang telah diproses. Pipeline akan secara otomatis menerapkan transformasi yang diperlukan sebelum melatih model.
 
 Prediksi:
-
 Setelah dilatih, model akan digunakan untuk membuat prediksi pada set pengujian yang belum pernah dilihat.
 
 Evaluasi Model:
-
 Performa setiap model akan dievaluasi menggunakan metrik regresi standar:
 
 Mean Absolute Error (MAE): Rata-rata dari nilai absolut kesalahan antara prediksi dan nilai aktual. MAE memberikan gambaran tentang seberapa besar kesalahan prediksi rata-rata.
-
 Mean Squared Error (MSE): Rata-rata dari kuadrat kesalahan. MSE memberikan bobot lebih besar pada kesalahan yang lebih besar.
-
 Root Mean Squared Error (RMSE): Akar kuadrat dari MSE. RMSE lebih mudah diinterpretasikan karena berada dalam skala yang sama dengan variabel target.
-
 R-squared (R2): Mengukur proporsi varians dalam variabel dependen yang dapat diprediksi dari variabel independen. Nilai R2 mendekati 1 menunjukkan model yang sangat baik.
 
 3. Optimasi Model (Hyperparameter Tuning - Tahap Lanjutan)
 Setelah model dasar dievaluasi, model terbaik akan menjadi kandidat untuk optimasi lebih lanjut melalui hyperparameter tuning.
-
 Metode: Teknik seperti GridSearchCV atau RandomizedSearchCV dari Scikit-learn akan digunakan untuk mencari kombinasi hyperparameter terbaik yang menghasilkan performa model optimal pada data validasi.
-
 Tujuan: Meningkatkan akurasi model di luar performa default atau awal, yang akan berkontribusi pada pencapaian target akurasi peramalan 90% yang ditetapkan oleh GlobalMart.
-
 Seluruh tahapan ini akan dilakukan secara sistematis untuk memastikan bahwa model yang dikembangkan tidak hanya akurat secara statistik tetapi juga relevan dan dapat diimplementasikan untuk memberikan nilai bisnis nyata bagi GlobalMart.
 
 
@@ -506,35 +414,24 @@ Metrik Evaluasi yang Digunakan
 Untuk mengukur seberapa baik model prediksi dalam memperkirakan jumlah_penjualan, kami menggunakan metrik evaluasi regresi standar:
 
 Mean Absolute Error (MAE):
-
 Deskripsi: MAE mengukur rata-rata dari selisih absolut antara nilai prediksi dan nilai aktual. Ini memberikan gambaran langsung tentang seberapa besar kesalahan prediksi rata-rata dalam unit target (yaitu, jumlah unit penjualan).
-
 Interpretasi: Nilai MAE yang lebih rendah menunjukkan performa model yang lebih baik. Jika MAE adalah 10, itu berarti, rata-rata, prediksi model meleset dari nilai aktual sebesar 10 unit penjualan.
 
 Mean Squared Error (MSE):
-
 Deskripsi: MSE mengukur rata-rata dari kuadrat selisih antara nilai prediksi dan nilai aktual. Karena kesalahan dikuadratkan, metrik ini memberikan bobot yang lebih besar pada kesalahan yang besar (outlier).
-
 Interpretasi: Nilai MSE yang lebih rendah menunjukkan performa model yang lebih baik. Namun, karena nilai ini dikuadratkan, interpretasinya tidak seintuitif MAE dalam unit asli.
 
 Root Mean Squared Error (RMSE):
-
 Deskripsi: RMSE adalah akar kuadrat dari MSE. Ini membawa metrik kembali ke unit asli dari variabel target, membuatnya lebih mudah diinterpretasikan daripada MSE. RMSE juga memberikan bobot lebih pada kesalahan besar dibandingkan MAE.
-
 Interpretasi: Mirip dengan MAE, nilai RMSE yang lebih rendah menunjukkan performa model yang lebih baik. Jika RMSE adalah 12, itu berarti, rata-rata, prediksi model meleset dari nilai aktual sebesar sekitar 12 unit penjualan, dengan penekanan pada kesalahan yang lebih signifikan.
 
 R-squared (R2 Score):
-
 Deskripsi: R2 Score, atau koefisien determinasi, mengukur proporsi varians dalam variabel dependen (jumlah penjualan) yang dapat dijelaskan oleh model dari variabel independen. Nilai R2 berkisar dari 0 hingga 1.
-
 Interpretasi:
-
 Nilai R2 mendekati 1 menunjukkan bahwa model menjelaskan sebagian besar variabilitas dalam data target dan memiliki kekuatan prediksi yang sangat baik.
 
 Nilai R2 mendekati 0 menunjukkan bahwa model tidak menjelaskan variabilitas target dengan baik.
-
 Nilai R2 negatif menunjukkan bahwa model lebih buruk daripada hanya memprediksi rata-rata data target.
-
 Hasil Proyek Berdasarkan Metrik Evaluasi
 Berdasarkan hasil pemodelan pada dataset sintetis GlobalMart, model-model yang diuji menunjukkan performa sebagai berikut:
 
