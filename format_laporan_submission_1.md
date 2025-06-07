@@ -37,8 +37,10 @@ Menjelaskan tujuan dari pernyataan masalah:
 - Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
 
     ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+    - untuk mencapai tujuan yang telah ditetapkan, kami mengajukan beberapa pendekatan:
+
+Pengembangan dan Evaluasi Model Prediktif Berganda: Kami akan mengembangkan dan mengevaluasi beberapa model regresi yang berbeda (Linear Regression, Random Forest, Gradient Boosting, XGBoost) untuk mengidentifikasi model terbaik yang mampu memprediksi jumlah penjualan. Performa model akan diukur menggunakan metrik standar seperti Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), dan R-squared (R2). Model dengan metrik evaluasi terbaik (misalnya, R2 tertinggi dan RMSE/MAE terendah) akan dipilih sebagai model terbaik.
+Analisis Faktor Pengaruh Penjualan: Setelah model terbaik dipilih, kami akan menganalisis pentingnya fitur (feature importance) dari model tersebut (jika didukung) untuk mengidentifikasi faktor-faktor kunci yang paling berkontribusi pada jumlah penjualan. Hal ini akan memberikan wawasan yang dapat digunakan GlobalMart untuk strategi bisnis, seperti perencanaan promosi dan penentuan harga.
 
 ## Data Understanding
 Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
