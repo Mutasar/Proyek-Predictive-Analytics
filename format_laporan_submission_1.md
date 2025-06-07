@@ -66,20 +66,16 @@ Referensi:
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
+Klarifikasi Masalah GlobalMart: 
 
-Business Understanding: Klarifikasi Masalah GlobalMart
 Bagian "Business Understanding" adalah fase krusial dalam setiap proyek analisis data, termasuk analisis prediktif. Pada tahap ini, fokus utamanya adalah klarifikasi masalah bisnis yang dihadapi oleh GlobalMart. Ini bukan hanya tentang memahami apa yang salah, tetapi juga mengapa itu salah, siapa yang terpengaruh, dan bagaimana solusi berbasis data dapat memberikan nilai. Proses ini melibatkan serangkaian langkah untuk mengubah masalah bisnis yang luas menjadi pertanyaan analitis yang spesifik dan terukur.
 
-1. Memahami Konteks Bisnis dan Tantangan Awal
+#1.Memahami Konteks Bisnis dan Tantangan Awal
 GlobalMart, sebagai perusahaan ritel global, menghadapi tantangan yang umum namun signifikan: inefisiensi dalam manajemen inventaris, promosi yang kurang efektif, dan kesulitan dalam perencanaan sumber daya. Masalah-masalah ini secara langsung memengaruhi profitabilitas dan kepuasan pelanggan.
 
 Masalah Awal (High-Level):
-
 "Kami sering kelebihan atau kekurangan stok produk."
-
 "Kampanye promosi kami tidak selalu menghasilkan penjualan yang diharapkan."
-
 "Sulit untuk merencanakan kebutuhan staf dan logistik secara akurat."
 
 2. Mengidentifikasi Pemangku Kepentingan (Stakeholders)
@@ -144,6 +140,7 @@ Perencanaan Operasional yang Proaktif: Dengan perkiraan permintaan yang andal, G
 
 Proses klarifikasi masalah ini memastikan bahwa proyek analisis prediktif tidak hanya menghasilkan model yang akurat secara statistik, tetapi juga model yang relevan dan memberikan nilai bisnis yang nyata bagi GlobalMart. Ini adalah fondasi untuk semua langkah selanjutnya dalam siklus hidup proyek data science.
 
+
 Referensi:
 
 [1] S. Makridakis, A. Spiliotis, & V. Assimakopoulos, "The M4 Competition: Results, findings, and conclusions," International Journal of Forecasting, vol. 36, no. 1, pp. 1-6, 2020.
@@ -165,14 +162,12 @@ Menjelaskan pernyataan masalah latar belakang:
 Menjelaskan tujuan dari pernyataan masalah:
 - Jawaban pernyataan masalah 1
 - Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
-
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+- Jawaban pernyataan masalah 
 
 Problem Statements and Goals: Studi Kasus GlobalMart Predictive Analytics
 Bagian ini menguraikan pernyataan masalah inti yang dihadapi GlobalMart dan tujuan spesifik yang ingin dicapai melalui implementasi analisis prediktif.
 
-Problem Statements (Pernyataan Masalah)
+# Problem Statements (Pernyataan Masalah)
 GlobalMart, sebagai perusahaan ritel global, menghadapi beberapa tantangan operasional signifikan yang menghambat efisiensi dan profitabilitas mereka:
 
 Manajemen Inventaris yang Tidak Efisien:
