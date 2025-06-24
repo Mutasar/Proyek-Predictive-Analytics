@@ -37,58 +37,58 @@ Menjelaskan tujuan dari pernyataan masalah:
 
 - Kami akan mengembangkan dan mengevaluasi beberapa model regresi yang berbeda (Linear Regression, Random Forest, Gradient Boosting, XGBoost) untuk mengidentifikasi model terbaik yang mampu memprediksi jumlah penjualan. Performa model akan diukur menggunakan metrik standar seperti Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), dan R-squared (R2). Model dengan metrik evaluasi terbaik (misalnya, R2 tertinggi dan RMSE/MAE terendah) akan dipilih sebagai model terbaik.
 
-Ukuran X_train: (42640, 11), y_train: (42640,)
-Ukuran X_test: (10660, 11), y_test: (10660,)
-
-Melatih model: Linear Regression
-  MAE: 46.73
-  MSE: 3294.60
-  RMSE: 57.40
-  R2: 0.23
-
-Melatih model: Random Forest
-  MAE: 45.45
-  MSE: 3041.66
-  RMSE: 55.15
-  R2: 0.29
-
-Melatih model: Gradient Boosting
-  MAE: 44.48
-  MSE: 2874.71
-  RMSE: 53.62
-  R2: 0.32
-
-Melatih model: XGBoost
-  MAE: 44.70
-  MSE: 2920.89
-  RMSE: 54.05
-  R2: 0.31
-
---- Ringkasan Hasil Evaluasi Model ---
-
-Model: Linear Regression
-  MAE: 46.73
-  MSE: 3294.60
-  RMSE: 57.40
-  R2: 0.23
-
-Model: Random Forest
-  MAE: 45.45
-  MSE: 3041.66
-  RMSE: 55.15
-  R2: 0.29
-
-Model: Gradient Boosting
-  MAE: 44.48
-  MSE: 2874.71
-  RMSE: 53.62
-  R2: 0.32
-
-Model: XGBoost
-  MAE: 44.70
-  MSE: 2920.89
-  RMSE: 54.05
-  R2: 0.31
+                        Ukuran X_train: (42640, 11), y_train: (42640,)
+                        Ukuran X_test: (10660, 11), y_test: (10660,)
+                        
+                        Melatih model: Linear Regression
+                          MAE: 46.73
+                          MSE: 3294.60
+                          RMSE: 57.40
+                          R2: 0.23
+                        
+                        Melatih model: Random Forest
+                          MAE: 45.45
+                          MSE: 3041.66
+                          RMSE: 55.15
+                          R2: 0.29
+                        
+                        Melatih model: Gradient Boosting
+                          MAE: 44.48
+                          MSE: 2874.71
+                          RMSE: 53.62
+                          R2: 0.32
+                        
+                        Melatih model: XGBoost
+                          MAE: 44.70
+                          MSE: 2920.89
+                          RMSE: 54.05
+                          R2: 0.31
+                        
+                        --- Ringkasan Hasil Evaluasi Model ---
+                        
+                        Model: Linear Regression
+                          MAE: 46.73
+                          MSE: 3294.60
+                          RMSE: 57.40
+                          R2: 0.23
+                        
+                        Model: Random Forest
+                          MAE: 45.45
+                          MSE: 3041.66
+                          RMSE: 55.15
+                          R2: 0.29
+                        
+                        Model: Gradient Boosting
+                          MAE: 44.48
+                          MSE: 2874.71
+                          RMSE: 53.62
+                          R2: 0.32
+                        
+                        Model: XGBoost
+                          MAE: 44.70
+                          MSE: 2920.89
+                          RMSE: 54.05
+                          R2: 0.31
   
 - Analisis Faktor Pengaruh Penjualan: Setelah model terbaik dipilih, kami akan menganalisis pentingnya fitur (feature importance) dari model tersebut (jika didukung) untuk mengidentifikasi faktor-faktor kunci yang paling berkontribusi pada jumlah penjualan. Hal ini akan memberikan wawasan yang dapat digunakan GlobalMart untuk strategi bisnis, seperti perencanaan promosi dan penentuan harga.
 
