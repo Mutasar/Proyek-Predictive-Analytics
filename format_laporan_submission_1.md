@@ -97,27 +97,22 @@ Data yang digunakan dalam proyek ini adalah data penjualan produk GlobalMart. Da
 sumber dataset yang kami ambil adalah : ([https://www.kaggle.com/datasets])([(https://www.kaggle.com/datasets/downshift/city-bike-travels-dataset]).Sumber data ini adalah dataset simulasi yang dibuat langsung dalam notebook ini.
 
 Informasi awal mengenai struktur data dapat dilihat dari output df.info() :
-<class 'pandas.core.frame.DataFrame'>
-Index: 53300 entries, 1500 to 54799
-Data columns (total 14 columns):
- #   Column                   Non-Null Count  Dtype         
----  ------                   --------------  -----         
- 0   tanggal                  53300 non-null  datetime64[ns]
- 1   id_produk                53300 non-null  object        
- 2   jumlah_penjualan         53300 non-null  int64         
- 3   harga_satuan             53300 non-null  float64       
- 4   biaya_promosi            53300 non-null  int64         
- 5   suhu_rata2               53300 non-null  float64       
- 6   hari_libur               53300 non-null  int64         
- 7   bulan                    53300 non-null  int64         
- 8   tahun                    53300 non-null  int64         
- 9   hari_dalam_minggu        53300 non-null  int64         
- 10  hari_dalam_tahun         53300 non-null  int32         
- 11  minggu_dalam_tahun       53300 non-null  int64         
- 12  jumlah_penjualan_lag_7   53300 non-null  float64       
- 13  jumlah_penjualan_lag_30  53300 non-null  float64       
-dtypes: datetime64[ns](1), float64(4), int32(1), int64(7), object(1)
-memory usage: 5.9+ MB
+
+c<class 'pandas.core.frame.DataFrame'>
+data terdiri dari 548350 baris dan 8 kolom:
+ #   Column                  Non-Null Count   Dtype  
+---  ------                  --------------   -----  
+ 0   departure_time          548350 non-null  object 
+ 1   return_time             548350 non-null  object 
+ 2   departure_station_id    548350 non-null  int64  
+ 3   departure_station_name  548350 non-null  object 
+ 4   return_station_id       548350 non-null  int64  
+ 5   return_station_name     548350 non-null  object 
+ 6   distance                547608 non-null  float64
+ 7   duration                548350 non-null  int64  
+dtypes: float64(1), int64(3), object(4)
+memory usage: 33.5+ MB
+
 
 df.head() 
 tanggal	id_produk	jumlah_penjualan	harga_satuan	biaya_promosi	suhu_rata2	hari_libur	bulan	tahun	hari_dalam_minggu	hari_dalam_tahun	minggu_dalam_tahun	jumlah_penjualan_lag_7	jumlah_penjualan_lag_30
@@ -214,22 +209,43 @@ Tahap persiapan data (data preparation) merupakan langkah krusial sebelum melati
 Memuat Data: Data penjualan dimuat ke dalam DataFrame Pandas. Dalam kasus ini, data dimuat dari file CSV.
 
 Pembersihan Data:
-Penanganan Nilai Null: Diperiksa keberadaan nilai null menggunakan isnull().sum(). Dalam proses pembersihan, baris yang memiliki nilai null pada kolom 'jumlah_penjualan_lag_7' dan 'jumlah_penjualan_lag_30' dihapus (dropna) karena fitur lag ini penting untuk model dan sulit untuk diimputasi tanpa memperkenalkan bias signifikan, terutama pada data deret waktu.
 
-Penanganan Duplikasi: Diperiksa keberadaan baris duplikat menggunakan duplicated().sum(). Baris duplikat kemudian dihapus (drop_duplicates) untuk memastikan keunikan setiap observasi.
+- Penanganan Nilai Null:
+  Diperiksa keberadaan nilai null menggunakan isnull().sum().
+  Dalam proses pembersihan, baris yang memiliki nilai null pada kolom 'jumlah_penjualan_lag_7' dan 'jumlah_penjualan_lag_30' dihapus (dropna) karena fitur lag ini penting untuk model    dan sulit untuk diimputasi tanpa memperkenalkan bias signifikan, terutama pada data deret waktu.
 
-Transformasi Tipe Data: Kolom tanggal dikonversi ke tipe data datetime untuk memfasilitasi ekstraksi fitur berbasis waktu.
+- Penanganan Duplikasi:
+  Diperiksa keberadaan baris duplikat menggunakan duplicated().sum().
+  Baris duplikat kemudian dihapus (drop_duplicates) untuk memastikan keunikan setiap observasi.
 
-Rekayasa Fitur (Feature Engineering): Fitur-fitur baru yang relevan diekstraksi dari kolom tanggal untuk menangkap pola temporal:
+- Transformasi Tipe Data:
+  Kolom tanggal dikonversi ke tipe data datetime untuk memfasilitasi ekstraksi fitur berbasis waktu.
 
-hari_dalam_tahun: Menangkap posisi hari dalam setahun.
-minggu_dalam_tahun: Menangkap posisi minggu dalam setahun.
-Fitur Lag: Dibuat fitur lag untuk menangkap ketergantungan temporal penjualan. jumlah_penjualan_lag_7 (penjualan 7 hari sebelumnya) dan jumlah_penjualan_lag_30 (penjualan 30 hari sebelumnya) dihitung menggunakan fungsi shift() setelah data diurutkan berdasarkan produk dan tanggal. Penggunaan groupby('id_produk') memastikan fitur lag dihitung secara terpisah untuk setiap produk.
-Pemilihan Fitur dan Target: Variabel independen (fitur, X) yang akan digunakan untuk prediksi dan variabel dependen (target, y) yaitu jumlah_penjualan diidentifikasi.
-Pemisahan Data Training dan Testing: Dataset dibagi menjadi set pelatihan (training set) dan set pengujian (testing set) menggunakan train_test_split dengan proporsi 80% untuk pelatihan dan 20% untuk pengujian. Pemisahan ini dilakukan setelah fitur lag dibuat dan baris null dihapus, untuk menghindari kebocoran data (data leakage) dari set pengujian ke set pelatihan.
-Standardisasi Fitur Numerik: Untuk fitur numerik, digunakan StandardScaler dalam ColumnTransformer untuk menstandardisasi nilainya (mengubah skala data sehingga memiliki rata-rata 0 dan standar deviasi 1). Standardisasi ini penting untuk model yang sensitif terhadap skala fitur, seperti Linear Regression atau model berbasis jarak. ColumnTransformer memastikan transformasi hanya diterapkan pada kolom numerik yang dipilih.
+- Rekayasa Fitur (Feature Engineering):
+  Fitur-fitur baru yang relevan diekstraksi dari kolom tanggal untuk menangkap pola temporal:
 
-Penanganan Fitur Kategorikal (Opsional/Dikomunikasikan): Meskipun ada kolom id_produk yang bersifat kategorikal, dalam pipeline pre-processing yang diaktifkan pada kode, fitur kategorikal tidak di-encode (bagian OneHotEncoder dikomentari). Hal ini menyiratkan bahwa model yang digunakan diharapkan dapat menangani fitur kategorikal secara internal (misalnya, beberapa model tree-based) atau bahwa id_produk tidak disertakan sebagai fitur dalam model yang dilatih. (Sesuaikan bagian ini jika Anda mengaktifkan OneHotEncoder atau menggunakan 'id_produk' sebagai fitur kategorikal).
+  hari_dalam_tahun: Menangkap posisi hari dalam setahun.
+  minggu_dalam_tahun: Menangkap posisi minggu dalam setahun.
+  
+  Fitur Lag:
+
+  Dibuat fitur lag untuk menangkap ketergantungan temporal penjualan. jumlah_penjualan_lag_7 (penjualan 7 hari sebelumnya) dan jumlah_penjualan_lag_30 (penjualan 30 hari sebelumnya)
+  dihitung menggunakan fungsi shift() setelah data diurutkan berdasarkan produk dan tanggal. Penggunaan groupby('id_produk') memastikan fitur lag dihitung secara terpisah untuk setiap
+  produk.
+  - Pemilihan Fitur dan Target:
+    Variabel independen (fitur, X) yang akan digunakan untuk prediksi dan variabel dependen (target, y) yaitu jumlah_penjualan diidentifikasi.
+  - Pemisahan Data Training dan Testing:
+    Dataset dibagi menjadi set pelatihan (training set) dan set pengujian (testing set) menggunakan train_test_split dengan proporsi 80% untuk pelatihan dan 20% untuk pengujian.
+    Pemisahan ini dilakukan setelah fitur lag dibuat dan baris null dihapus, untuk menghindari kebocoran data (data leakage) dari set pengujian ke set pelatihan.
+  - Standardisasi Fitur Numerik:
+    Untuk fitur numerik, digunakan StandardScaler dalam ColumnTransformer untuk menstandardisasi nilainya (mengubah skala data sehingga memiliki rata-rata 0 dan standar deviasi 1).
+    Standardisasi ini penting untuk model yang sensitif terhadap skala fitur, seperti Linear Regression atau model berbasis jarak. ColumnTransformer memastikan transformasi hanya
+    diterapkan pada kolom numerik yang dipilih.
+
+- Penanganan Fitur Kategorikal (Opsional/Dikomunikasikan):
+  Meskipun ada kolom id_produk yang bersifat kategorikal, dalam pipeline pre-processing yang diaktifkan pada kode, fitur kategorikal tidak di-encode (bagian OneHotEncoder
+  dikomentari). Hal ini menyiratkan bahwa model yang digunakan diharapkan dapat menangani fitur kategorikal secara internal (misalnya, beberapa model tree-based) atau bahwa id_produk
+  tidak disertakan sebagai fitur dalam model yang dilatih. (Sesuaikan bagian ini jika Anda mengaktifkan OneHotEncoder atau menggunakan 'id_produk' sebagai fitur kategorikal).
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 Tahap persiapan data (data preparation) adalah fase esensial dalam alur kerja machine learning yang bertujuan untuk mengubah data mentah menjadi format yang sesuai dan berkualitas tinggi untuk analisis dan pemodelan. Proses ini sangat penting karena kualitas data input secara langsung memengaruhi performa model. Dalam proyek ini, langkah-langkah data preparation dilakukan dengan urutan dan alasan sebagai berikut:
@@ -243,49 +259,73 @@ Alasan: Memuat data adalah langkah pertama untuk membawa data mentah ke dalam li
 
 Proses: Dilakukan pemeriksaan terhadap keberadaan nilai yang hilang (null) dan baris yang terduplikasi. Baris yang memiliki nilai null pada kolom jumlah_penjualan_lag_7 dan jumlah_penjualan_lag_30 dihapus. Baris yang merupakan duplikat juga dihapus.
 Alasan:
-Nilai Null: Nilai null dapat menyebabkan error pada banyak algoritma machine learning atau menghasilkan prediksi yang tidak akurat. Kolom jumlah_penjualan_lag_7 dan jumlah_penjualan_lag_30 sangat krusial untuk model peramalan deret waktu, dan mengimputasi nilai yang hilang pada fitur lag dapat sangat menyesatkan, terutama untuk data di awal deret waktu. Oleh karena itu, menghapus baris yang nilai lag-nya tidak tersedia (terutama di awal deret waktu setelah pengurutan) adalah pendekatan yang lebih aman dalam konteks ini.
-Duplikasi: Baris duplikat dapat menyebabkan bias dalam pelatihan model karena data yang sama dipertimbangkan lebih dari sekali, yang secara artifisial dapat meningkatkan bobot observasi tersebut dan mengarah pada overestimasi atau underestimasi pola data. Menghapus duplikat memastikan setiap observasi adalah unik.
+Nilai Null: Nilai null dapat menyebabkan error pada banyak algoritma machine learning atau menghasilkan prediksi yang tidak akurat. Kolom jumlah_penjualan_lag_7 dan 
+jumlah_penjualan_lag_30 sangat krusial untuk model peramalan deret waktu, dan mengimputasi nilai yang hilang pada fitur lag dapat sangat menyesatkan, terutama untuk data di awal deret 
+waktu. Oleh karena itu, menghapus baris yang nilai lag-nya tidak tersedia (terutama di awal deret waktu setelah pengurutan) adalah pendekatan yang lebih aman dalam konteks ini.
+Duplikasi: Baris duplikat dapat menyebabkan bias dalam pelatihan model karena data yang sama dipertimbangkan lebih dari sekali, yang secara artifisial dapat meningkatkan bobot 
+observasi tersebut dan mengarah pada overestimasi atau underestimasi pola data. Menghapus duplikat memastikan setiap observasi adalah unik.
 
 3. Transformasi Tipe Data
 
 Proses: Kolom tanggal yang awalnya mungkin berupa string atau objek diubah menjadi tipe data datetime.
-Alasan: Mengubah tipe data menjadi datetime memungkinkan ekstraksi komponen waktu seperti tahun, bulan, hari, dll., dengan mudah. Ini penting untuk membuat fitur berbasis waktu yang relevan untuk model deret waktu dan juga untuk memastikan operasi berbasis tanggal (seperti pengurutan) dilakukan dengan benar.
+Alasan: Mengubah tipe data menjadi datetime memungkinkan ekstraksi komponen waktu seperti tahun, bulan, hari, dll., dengan mudah. Ini penting untuk membuat fitur berbasis waktu yang 
+relevan untuk model deret waktu dan juga untuk memastikan operasi berbasis tanggal (seperti pengurutan) dilakukan dengan benar.
 
 4. Rekayasa Fitur (Feature Engineering)
 
-Proses: Fitur-fitur baru dibuat dari data yang sudah ada untuk memberikan informasi tambahan kepada model. Ini termasuk mengekstraksi hari_dalam_tahun, minggu_dalam_tahun dari kolom tanggal, serta membuat jumlah_penjualan_lag_7 dan jumlah_penjualan_lag_30 dengan menggunakan fungsi shift setelah data diurutkan berdasarkan produk dan tanggal.
+Proses: Fitur-fitur baru dibuat dari data yang sudah ada untuk memberikan informasi tambahan kepada model. Ini termasuk mengekstraksi hari_dalam_tahun, minggu_dalam_tahun dari kolom 
+tanggal, serta membuat jumlah_penjualan_lag_7 dan jumlah_penjualan_lag_30 dengan menggunakan fungsi shift setelah data diurutkan berdasarkan produk dan tanggal.
 Alasan:
-Fitur seperti bulan, tahun, hari_dalam_minggu, hari_dalam_tahun, dan minggu_dalam_tahun menangkap pola musiman (misalnya, penjualan lebih tinggi di bulan tertentu atau hari tertentu dalam seminggu) dan tren. Model tidak dapat secara otomatis 'memahami' siklus waktu hanya dari kolom tanggal mentah.
-Fitur lag (jumlah_penjualan_lag_7, jumlah_penjualan_lag_30) sangat penting untuk peramalan deret waktu. Mereka memberikan informasi historis langsung tentang penjualan produk tersebut, yang seringkali menjadi prediktor terbaik untuk penjualan di masa depan. Model dapat belajar dari ketergantungan temporal ini. Penggunaan groupby('id_produk') sebelum shift memastikan bahwa lag dihitung dalam deret waktu setiap produk, bukan di seluruh dataset.
+Fitur seperti bulan, tahun, hari_dalam_minggu, hari_dalam_tahun, dan minggu_dalam_tahun menangkap pola musiman (misalnya, penjualan lebih tinggi di bulan tertentu atau hari tertentu 
+dalam seminggu) dan tren. Model tidak dapat secara otomatis 'memahami' siklus waktu hanya dari kolom tanggal mentah.
+Fitur lag (jumlah_penjualan_lag_7, jumlah_penjualan_lag_30) sangat penting untuk peramalan deret waktu. Mereka memberikan informasi historis langsung tentang penjualan produk 
+tersebut, yang seringkali menjadi prediktor terbaik untuk penjualan di masa depan. Model dapat belajar dari ketergantungan temporal ini. Penggunaan groupby('id_produk') sebelum shift 
+memastikan bahwa lag dihitung dalam deret waktu setiap produk, bukan di seluruh dataset.
 
 5. Pemilihan Fitur dan Target
 
 Proses: Kolom yang akan digunakan sebagai variabel independen (fitur, X) dan kolom yang menjadi variabel dependen (target, y, yaitu jumlah_penjualan) dipilih dan dipisahkan.
-Alasan: Dengan jelas memisahkan fitur dan target, kita mendefinisikan input (X) dan output (y) yang akan digunakan untuk melatih model pembelajaran mesin. Ini adalah format standar yang dibutuhkan oleh sebagian besar algoritma supervised learning.
+Alasan: Dengan jelas memisahkan fitur dan target, kita mendefinisikan input (X) dan output (y) yang akan digunakan untuk melatih model pembelajaran mesin. Ini adalah format standar 
+yang dibutuhkan oleh sebagian besar algoritma supervised learning.
 
 6. Pemisahan Data Training dan Testing
 
-Proses: Dataset yang sudah bersih dan memiliki fitur lengkap dibagi menjadi dua subset: data pelatihan (X_train, y_train) dan data pengujian (X_test, y_test). Umumnya proporsi 80:20 atau 70:30 digunakan.
-Alasan: Memisahkan data menjadi set pelatihan dan pengujian adalah praktik standar untuk mengevaluasi performa model secara objektif. Model hanya dilatih menggunakan data pelatihan dan kemudian dievaluasi menggunakan data pengujian yang belum pernah dilihat sebelumnya. Ini memberikan perkiraan yang lebih realistis tentang seberapa baik model akan berkinerja pada data baru di dunia nyata dan membantu mendeteksi overfitting (di mana model hanya bekerja baik pada data pelatihan tetapi buruk pada data baru). Penting untuk melakukan pemisahan ini setelah semua rekayasa fitur yang melibatkan data historis (seperti fitur lag) selesai, tetapi sebelum standardisasi atau encoding yang dilakukan oleh pipeline, untuk menghindari data leakage.
+Proses: Dataset yang sudah bersih dan memiliki fitur lengkap dibagi menjadi dua subset: data pelatihan (X_train, y_train) dan data pengujian (X_test, y_test). Umumnya proporsi 80:20 
+atau 70:30 digunakan.
+Alasan: Memisahkan data menjadi set pelatihan dan pengujian adalah praktik standar untuk mengevaluasi performa model secara objektif. Model hanya dilatih menggunakan data pelatihan 
+dan kemudian dievaluasi menggunakan data pengujian yang belum pernah dilihat sebelumnya. Ini memberikan perkiraan yang lebih realistis tentang seberapa baik model akan berkinerja pada 
+data baru di dunia nyata dan membantu mendeteksi overfitting (di mana model hanya bekerja baik pada data pelatihan tetapi buruk pada data baru). Penting untuk melakukan pemisahan ini 
+setelah semua rekayasa fitur yang melibatkan data historis (seperti fitur lag) selesai, tetapi sebelum standardisasi atau encoding yang dilakukan oleh pipeline, untuk menghindari data 
+leakage.
 
 7. Standardisasi Fitur Numerik
 
-Proses: Nilai dari semua fitur numerik diskalakan menggunakan StandardScaler sehingga setiap fitur memiliki rata-rata nol dan varians satu. Proses ini diintegrasikan ke dalam ColumnTransformer dan pipeline.
-Alasan: Banyak algoritma machine learning (terutama yang berbasis jarak atau gradien, seperti Linear Regression, Support Vector Machines, atau Neural Networks) sangat sensitif terhadap skala fitur input. Fitur dengan rentang nilai yang besar dapat mendominasi fitur lain dengan rentang kecil. Standardisasi memastikan bahwa setiap fitur berkontribusi secara proporsional pada perhitungan model dan membantu algoritma konvergen lebih cepat dan lebih stabil. ColumnTransformer digunakan untuk menerapkan transformasi ini hanya pada kolom numerik yang relevan.
+Proses: Nilai dari semua fitur numerik diskalakan menggunakan StandardScaler sehingga setiap fitur memiliki rata-rata nol dan varians satu. Proses ini diintegrasikan ke dalam 
+ColumnTransformer dan pipeline.
+Alasan: Banyak algoritma machine learning (terutama yang berbasis jarak atau gradien, seperti Linear Regression, Support Vector Machines, atau Neural Networks) sangat sensitif 
+terhadap skala fitur input. Fitur dengan rentang nilai yang besar dapat mendominasi fitur lain dengan rentang kecil. Standardisasi memastikan bahwa setiap fitur berkontribusi secara 
+proporsional pada perhitungan model dan membantu algoritma konvergen lebih cepat dan lebih stabil. ColumnTransformer digunakan untuk menerapkan transformasi ini hanya pada kolom 
+numerik yang relevan.
 
 
 ## Modeling
-Pada tahap ini, beberapa model machine learning regresi dipilih dan dilatih untuk memprediksi jumlah penjualan. Tujuan dari membandingkan beberapa model adalah untuk mengidentifikasi algoritma mana yang paling sesuai dan memberikan performa terbaik pada dataset ini untuk tugas peramalan penjualan.
+Pada tahap ini, beberapa model machine learning regresi dipilih dan dilatih untuk memprediksi jumlah penjualan. Tujuan dari membandingkan beberapa model adalah untuk mengidentifikasi 
+algoritma mana yang paling sesuai dan memberikan performa terbaik pada dataset ini untuk tugas peramalan penjualan.
 
 Proses pemodelan melibatkan tahapan berikut:
 
-- Pemilihan Model Regresi: Berdasarkan sifat masalah (memprediksi nilai kontinu, yaitu jumlah penjualan) dan praktik umum dalam peramalan, beberapa model regresi yang populer dan kuat dipilih:
+- Pemilihan Model Regresi: Berdasarkan sifat masalah (memprediksi nilai kontinu, yaitu jumlah penjualan) dan praktik umum dalam peramalan, beberapa model regresi yang populer dan kuat
+  dipilih:
 
-    Linear Regression: Model linier sederhana yang berguna sebagai baseline dan memberikan interpretasi yang mudah tentang hubungan antara fitur dan target.
-    Random Forest Regressor: Model ensemble berbasis tree yang kuat, kurang rentan terhadap overfitting dibandingkan single decision tree, dan dapat menangani interaksi non-linier antar fitur.
-    Gradient Boosting Regressor: Model ensemble lain yang secara iteratif membangun tree secara sekuensial, di mana setiap tree mencoba mengoreksi kesalahan dari tree sebelumnya. Model ini sering memberikan performa tinggi.
-    XGBoost Regressor: Implementasi yang dioptimalkan dari gradient boosting yang terkenal karena kecepatannya dan performa terbaik di berbagai kompetisi machine learning.
-    Pembuatan Pipeline Modeling: Untuk memastikan bahwa langkah pre-processing (standardisasi fitur numerik) diterapkan secara konsisten pada data pelatihan dan pengujian sebelum data dimasukkan ke dalam model, dibuat Pipeline untuk setiap model. Pipeline ini menggabungkan ColumnTransformer (yang berisi StandardScaler untuk fitur numerik) dengan estimator model regresi yang dipilih. Penggunaan pipeline mencegah kebocoran data dari set pengujian selama standardisasi dan menyederhanakan alur kerja.
+Linear Regression: Model linier sederhana yang berguna sebagai baseline dan memberikan interpretasi yang mudah tentang hubungan antara fitur dan target.
+Random Forest Regressor: Model ensemble berbasis tree yang kuat, kurang rentan terhadap overfitting dibandingkan single decision tree, dan dapat menangani interaksi non-linier antar 
+fitur.
+Gradient Boosting Regressor: Model ensemble lain yang secara iteratif membangun tree secara sekuensial, di mana setiap tree mencoba mengoreksi kesalahan dari tree sebelumnya. Model
+ini sering memberikan performa tinggi.
+XGBoost Regressor: Implementasi yang dioptimalkan dari gradient boosting yang terkenal karena kecepatannya dan performa terbaik di berbagai kompetisi machine learning.
+Pembuatan Pipeline Modeling: Untuk memastikan bahwa langkah pre-processing (standardisasi fitur numerik) diterapkan secara konsisten pada data pelatihan dan pengujian sebelum data 
+dimasukkan ke dalam model, dibuat Pipeline untuk setiap model. Pipeline ini menggabungkan ColumnTransformer (yang berisi StandardScaler untuk fitur numerik) dengan estimator model 
+regresi yang dipilih. Penggunaan pipeline mencegah kebocoran data dari set pengujian selama standardisasi dan menyederhanakan alur kerja.
 
 - Konfigurasi Parameter Model: Setiap model diinisialisasi dengan parameter tertentu. Parameter ini adalah hyperparameter model yang mengontrol proses pembelajaran algoritma [1, 2].
 Linear Regression: Menggunakan parameter default.
@@ -304,11 +344,14 @@ n_estimators=100: Jumlah boosting rounds (jumlah tree).
 learning_rate=0.1: Tingkat pembelajaran, serupa dengan Gradient Boosting.
 random_state=42: Mengunci seed untuk reproducibility.
 n_jobs=-1: Menggunakan semua core prosesor yang tersedia.
-Parameter ini dipilih berdasarkan nilai default yang umum dan dipertimbangkan sebagai titik awal yang baik. Penyetelan hyperparameter lebih lanjut (hyperparameter tuning) dapat dilakukan di masa mendatang untuk mengoptimalkan performa model secara lebih mendalam [1].
+Parameter ini dipilih berdasarkan nilai default yang umum dan dipertimbangkan sebagai titik awal yang baik. Penyetelan hyperparameter lebih lanjut (hyperparameter tuning) dapat 
+dilakukan di masa mendatang untuk mengoptimalkan performa model secara lebih mendalam [1].
 
-Pelatihan Model: Setiap pipeline, yang berisi langkah pre-processing dan model, dilatih menggunakan data pelatihan (X_train, y_train) menggunakan metode .fit(). Selama pelatihan, model belajar pola dan hubungan antara fitur dan target dari data training.
+Pelatihan Model: Setiap pipeline, yang berisi langkah pre-processing dan model, dilatih menggunakan data pelatihan (X_train, y_train) menggunakan metode .fit(). Selama pelatihan, 
+model belajar pola dan hubungan antara fitur dan target dari data training.
 
-Prediksi: Setelah dilatih, setiap model digunakan untuk membuat prediksi (y_pred) pada data pengujian (X_test) menggunakan metode .predict(). Data X_test melalui pipeline pre-processing yang sama sebelum dimasukkan ke dalam model.
+Prediksi: Setelah dilatih, setiap model digunakan untuk membuat prediksi (y_pred) pada data pengujian (X_test) menggunakan metode .predict(). Data X_test melalui pipeline pre-
+processing yang sama sebelum dimasukkan ke dalam model.
 
 Evaluasi Model: Hasil prediksi (y_pred) dibandingkan dengan nilai aktual (y_test) dari data pengujian. Proses evaluasi ini akan dibahas lebih lanjut pada bagian selanjutnya.
 
@@ -318,12 +361,15 @@ Evaluasi Model: Hasil prediksi (y_pred) dibandingkan dengan nilai aktual (y_test
 
 
 **Jelaskan proses improvement yang dilakukan**.
-Dalam pendekatan ini, proses improvement berfokus pada pemilihan model regresi yang paling efektif di antara beberapa algoritma yang telah diimplementasikan dan dievaluasi. Daripada melakukan hyperparameter tuning mendalam pada setiap model (yang bisa menjadi langkah perbaikan selanjutnya), strategi yang diterapkan di sini adalah membandingkan performa awal dari model-model yang dipilih dengan pengaturan parameter standar atau umum.
+Dalam pendekatan ini, proses improvement berfokus pada pemilihan model regresi yang paling efektif di antara beberapa algoritma yang telah diimplementasikan dan dievaluasi. Daripada 
+melakukan hyperparameter tuning mendalam pada setiap model (yang bisa menjadi langkah perbaikan selanjutnya), strategi yang diterapkan di sini adalah membandingkan performa awal dari 
+model-model yang dipilih dengan pengaturan parameter standar atau umum.
 
 Proses improvement ini dilakukan melalui tahapan berikut:
-- Melatih Beberapa Model: Seperti dijelaskan di bagian "Modeling", empat model regresi yang berbeda (Linear Regression, Random Forest Regressor, Gradient Boosting Regressor, dan XGBoost Regressor) dilatih menggunakan data pelatihan yang sama dan melalui pipeline pre-processing yang konsisten.
+- Melatih Beberapa Model: Seperti dijelaskan di bagian "Modeling", empat model regresi yang berbeda (Linear Regression, Random Forest Regressor, Gradient Boosting Regressor, dan- XGBoost Regressor) dilatih menggunakan data pelatihan yang sama dan melalui pipeline pre-processing yang konsisten.
 - Mengevaluasi Setiap Model: Setelah setiap model dilatih, performanya diukur menggunakan metrik evaluasi standar pada data pengujian (X_test, y_test). Metrik yang digunakan mencakup Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), dan R-squared (R2).
-- Membandingkan Hasil Evaluasi: Metrik performa dari keempat model dikumpulkan dan dibandingkan. Visualisasi (seperti bar plot R2 dan RMSE) digunakan untuk memudahkan perbandingan visual.
+- Membandingkan Hasil Evaluasi: Metrik performa dari keempat model dikumpulkan dan dibandingkan. Visualisasi (seperti bar plot R2 dan RMSE) digunakan untuk memudahkan perbandingan
+  visual.
 - Memilih Model Terbaik: Model yang menunjukkan performa terbaik berdasarkan metrik evaluasi yang relevan (dalam kasus regresi, umumnya R2 tertinggi dan RMSE/MAE terendah) dipilih sebagai solusi terbaik untuk tugas peramalan penjualan ini. Kode secara eksplisit mengidentifikasi model dengan R2 tertinggi sebagai model terbaik.
   
 Alasan Pendekatan Ini:
