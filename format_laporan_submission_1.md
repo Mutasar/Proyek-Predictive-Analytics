@@ -96,22 +96,21 @@ Model: XGBoost
 Data yang digunakan dalam proyek ini adalah data penjualan produk GlobalMart. Data ini disimulasikan untuk merepresentasikan karakteristik data penjualan ritel yang mencakup informasi seperti tanggal, ID produk, jumlah penjualan, harga satuan, biaya promosi, suhu rata-rata, indikator hari libur, bulan, tahun, dan hari dalam seminggu. Simulasi data ini juga mencakup faktor-faktor seperti musiman, tren, promosi, hari libur, dan pengaruh cuaca untuk menciptakan dataset yang kaya dan realistis untuk tujuan peramalan.
 sumber dataset yang kami ambil adalah : ([https://www.kaggle.com/datasets])([(https://www.kaggle.com/datasets/downshift/city-bike-travels-dataset]).Sumber data ini adalah dataset simulasi yang dibuat langsung dalam notebook ini.
 
-Informasi awal mengenai struktur data dapat dilihat dari output df.info() :
-
-c<class 'pandas.core.frame.DataFrame'>
-data terdiri dari 548350 baris dan 8 kolom:
- #   Column                  Non-Null Count   Dtype  
----  ------                  --------------   -----  
- 0   departure_time          548350 non-null  object 
- 1   return_time             548350 non-null  object 
- 2   departure_station_id    548350 non-null  int64  
- 3   departure_station_name  548350 non-null  object 
- 4   return_station_id       548350 non-null  int64  
- 5   return_station_name     548350 non-null  object 
- 6   distance                547608 non-null  float64
- 7   duration                548350 non-null  int64  
-dtypes: float64(1), int64(3), object(4)
-memory usage: 33.5+ MB
+  Informasi awal mengenai struktur data dapat dilihat dari output df.info() :
+                      <class 'pandas.core.frame.DataFrame'>
+                      data terdiri dari 548350 baris dan 8 kolom:
+                       #   Column                  Non-Null Count   Dtype  
+                      ---  ------                  --------------   -----  
+                       0   departure_time          548350 non-null  object 
+                       1   return_time             548350 non-null  object 
+                       2   departure_station_id    548350 non-null  int64  
+                       3   departure_station_name  548350 non-null  object 
+                       4   return_station_id       548350 non-null  int64  
+                       5   return_station_name     548350 non-null  object 
+                       6   distance                547608 non-null  float64
+                       7   duration                548350 non-null  int64  
+                      dtypes: float64(1), int64(3), object(4)
+                      memory usage: 33.5+ MB
 
 
 df.head() 
